@@ -1,7 +1,5 @@
 # Taskserver container
 
-[![Build Status](https://travis-ci.org/coaxial/docker-taskserver.svg?branch=master)](https://travis-ci.org/coaxial/docker-taskserver) [![](https://images.microbadger.com/badges/image/coaxial/taskserver.svg)](https://microbadger.com/images/coaxial/taskserver "Get your own image badge on microbadger.com")
-
 This is an Alpine container with taskd (taskwarrior server).
 
 It is intended as a base image.
@@ -11,3 +9,17 @@ Rebuilt whenever `alpine:latest` is.
 # Volumes
 
 - `/var/taskd` (which is also the value set for `$TASKDDATA`)
+
+
+# First run
+
+Run the initialization functions:
+
+```
+docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd init
+docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd config server localhost:53589
+docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd config --force log /var/log/taskd.log
+docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd config --force pid.file /var/run/taskd.pid
+docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd config --force server localhost:53589
+
+```
