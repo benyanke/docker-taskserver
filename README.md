@@ -23,3 +23,5 @@ docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver ta
 docker run -it --rm --volume [your-config-dir]:/var/taskd benyanke/taskserver taskd config --force server localhost:53589
 
 ```
+
+TODO: add these to an entrypoint
