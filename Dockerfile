@@ -7,4 +7,4 @@ VOLUME /var/taskd
 
 EXPOSE 53589
 
-CMD ["taskd", "--version"]
+CMD ["taskd", "server", "--data", "$TASKDATA"]
